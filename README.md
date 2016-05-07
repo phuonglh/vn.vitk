@@ -64,7 +64,7 @@ etc. We hope that these tools will be available soon.
 
 ## Running ##
 
-### Resource Files Preparation ###
+### Data Files ###
 
 By default, the main tool of Vitk is Vietnamese word
 segmentation. This tool uses some data files specified in the
@@ -158,7 +158,7 @@ and invoke an appropriate command. For example:
 
 ## Contact ##
 
-Any bug reports, suggestions, collaborations are welcome. I am
+Any bug reports, suggestions and collaborations are welcome. I am
 reachable at: 
 
 * LE-HONG Phuong, <lhphuong@protonmail.ch>

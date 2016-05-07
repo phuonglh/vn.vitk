@@ -41,6 +41,7 @@ etc. We hope that these tools will be available soon.
   (console window).
 
 	`java -version`
+	
 	`mvn -version`
 
 * Download a prebuilt version of [Apache Spark](https://spark.apache.org/).

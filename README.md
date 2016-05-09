@@ -46,7 +46,7 @@ etc. We hope that these tools will be available soon.
 
 * Download a prebuilt version of [Apache Spark](https://spark.apache.org/).
 	Vitk uses Spark version 1.6.1. Unpack the compressed file to a directory,
-	for example "~/spark" where "~" is your home directory.
+	for example `~/spark` where `~` is your home directory.
 
 * Download Vitk, either a binary archive or its source code. The
   repository URL of the project is [Vitk](https://github.com/phuonglh/vn.vitk.git).
@@ -68,9 +68,9 @@ etc. We hope that these tools will be available soon.
 
 By default, the main tool of Vitk is Vietnamese word
 segmentation. This tool uses some data files specified in the
-subdirectory `dat/tok` and `dat/whitepace.model`. If you run Vitk, by
-default it accepts a source text and tokenizes the text into
-tokens. 
+subdirectory `dat/tok`. Vitk accepts a source text and tokenizes the text into
+tokens. The source text comes either from an input text file or from an URL, 
+as specified in the usage below. 
 
 Vitk can run as an application on a stand-alone cluster mode  or on a
 real cluster. Since the toolkit runs on a cluster, it is required that
@@ -79,7 +79,7 @@ which are normally located in a shared directory readable by all the
 machines.
 
 If you use a Linux operating system, it is easy to share or
-"export" a directory via a network file system (NFS). By default, VitK
+"export" a directory via a network file system ([NFS](https://en.wikipedia.org/wiki/Network_File_System)). By default, Vitk
 searches for data files in the directory `/export/dat/`. Therefore, you need
 to copy subdirectories `dat/tok` into that directory, so you have two folders:
 
@@ -98,13 +98,13 @@ main JAR file `vn.vitk-1.0.jar` to Apache Spark.
 The current parameters of Vitk are as follows:
 
 * `-m <master-url>`: the master URL for the cluster, for example
-  spark://192.168.1.1:7077. If you do not have a cluster, you can
+  `spark://192.168.1.1:7077`. If you do not have a cluster, you can
   ignore this parameter. In this case, Vitk uses the stand-alone
   cluster mode, which is defined by `local[*]`, that is, it uses all
-  the CPU core of your single machine.
+  the CPU cores of your single machine.
 
 * `-i <input-file>`: the name of an input file to be segmented. This
-   should be a text file in UTF-8 encoding. VitK will read and
+   should be a text file in UTF-8 encoding. Vitk will read and
    tokenize every lines of this file.
 
 * `-u <url>`: an Internet URL containing Vietnamese text to be
@@ -118,7 +118,7 @@ The current parameters of Vitk are as follows:
    tokenization results. Since by default, Vitk uses Hadoop file
    system when saving results, this is actually a directory containing
    resulting text files. If this parameter is not specified, the result is
-   printed on the console window.
+   printed to the console window.
 
 * `-v`: this parameter does not require argument. If it is used, Vitk
    runs in the verbose mode, in which some intermediate information
@@ -130,7 +130,7 @@ The current parameters of Vitk are as follows:
    phrase graph as default. The model is
    pre-trained and loaded from the data directory `whitespace.model`.
    However, the result is often worse than the default. Thus, you should
-   consider to use this option as an extra experimentation.
+   consider to use this option only as an extra experimentation.
 
 Suppose that Apache Spark has been installed in `~/spark`, Vitk has
 been installed in `~/vitk`, data files have been copied to
@@ -149,6 +149,21 @@ and invoke an appropriate command. For example:
 
 * `./bin/spark-submit ~/vitk/target/vn.vitk-1.0.jar -m <master-url> -i  <input-file> -o <output-file> -v`
 
+Note that if you are processing very large texts, for a better performance, 
+you should consider to set appropriate options of the `spark-submit` command, for example 
+`--executor-memory`. See more  on [submitting Apache Spark applications](http://spark.apache.org/docs/latest/submitting-applications.html). 
+
+You can also import the source code of Vitk to your favorite IDE (Eclipse, Netbeans, etc), compile and 
+run from source, for example, launch the class `vn.vitk.tok.Tokenizer.java` for word segmentation, providing 
+appropriate arguments as described above.
+
+## Documentation ##
+
+The algorithms used by the tools of Vitk can be found in some related scientific publications. 
+However, some of the main methods implemented in Vitk have been, and will be described in a more 
+accessible way by blog posts. For example, the word segmentation method is described in:
+* [Vietnamese word segmentation - Part I](http://tech.fpt.com.vn/en/expert-opinion/vietnamese-word-segmentation-part-i-nd498043.html)
+* [Vietnamese word segmentation - Part II](http://tech.fpt.com.vn/en/expert-opinion/vietnamese-word-segmentation-part-ii-nd498054.html)
 
 ## Contribution Guidelines ##
 

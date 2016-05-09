@@ -176,5 +176,5 @@ accessible way by blog posts. For example, the word segmentation method is descr
 Any bug reports, suggestions and collaborations are welcome. I am
 reachable at: 
 
-* LE-HONG Phuong, <lhphuong@protonmail.ch>
+* LE-HONG Phuong
 * http://mim.hus.vnu.edu.vn/phuonglh

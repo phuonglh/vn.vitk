@@ -12,8 +12,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -127,11 +127,37 @@ public class Tokenizer implements Serializable {
 	 * @return a RDD of tokenized text lines.
 	 */
 	public JavaRDD<String> tokenize(JavaRDD<String> input) {
+		if (verbose) {
+			// print some basic statistic about the input, including 
+			// max line length, min line length, average line length in syllables
+			JavaRDD<Integer> wordCount = input.map(new Function<String, Integer>() {
+				private static final long serialVersionUID = 7214093453452927565L;
+				@Override
+				public Integer call(String line) throws Exception {
+					return line.split("\\s+").length;
+				}
+				
+			});
+			Comparator<Integer> comp = new IntegerComparator();
+			System.out.println("Max line length (in syllables) = " + wordCount.max(comp));
+			System.out.println("Min line length (in syllables) = " + wordCount.min(comp));
+			float totalCount = wordCount.reduce(new Function2<Integer, Integer, Integer>() {
+				private static final long serialVersionUID = 1L;
+				@Override
+				public Integer call(Integer v1, Integer v2) throws Exception {
+					return v1 + v2;
+				}
+			});
+			System.out.println("Avg line length (in syllables) = " + (totalCount) / input.count());
+		}
+		
 		JavaRDD<String> output = null;
 		if (classifier == null) {
-			// use phrase graph approach (shortest paths and bigram model) 
+			// use phrase graph approach (shortest paths and bigram model)
+			// to segment phrases
 			output = input.map(new SegmentationFunction());
 		} else {
+			// use logistic regression approach to segment phrases
 			JavaRDD<String> s = input.map(new SegmentationFunction());
 			// make sure that the preceding lazy computation has been evaluated
 			// so that whitespace contexts have been properly accumulated
@@ -223,6 +249,7 @@ public class Tokenizer implements Serializable {
 	 */
 	public List<String> tokenize(URL url, PrintWriter writer) {
 		try {
+			System.out.println("Extracting the text content of the URL...");
 			String text = ArticleExtractor.INSTANCE.getText(new InputStreamReader(url.openStream(), "UTF-8"));
 			if (verbose) {
 				System.out.println("URL text content:");
@@ -495,10 +522,11 @@ public class Tokenizer implements Serializable {
 		private Map<Integer, LinkedList<Integer>> edges = new HashMap<Integer, LinkedList<Integer>>();
 
 		void makeGraph(String phrase) {
+			edges.clear();
 			syllables = phrase.split("\\s+");
 			n = syllables.length;
 			if (n > 128) {
-				System.out.println("WARNING: Phrase too long (>= 128 syllables), tokenization will be slow...");
+				System.out.println("WARNING: Phrase too long (>= 128 syllables), tokenization may be slow...");
 				System.out.println(phrase);
 			}
 			for (int j = 0; j <= n; j++) {
@@ -532,60 +560,20 @@ public class Tokenizer implements Serializable {
 		 * @return a list of paths, each path is a linked list of vertices.
 		 */
 		public List<LinkedList<Integer>> shortestPaths() {
-			List<LinkedList<Integer>> allPaths = paths();
-			// determine the minimal length of valid paths.
-			// A path is valid if it starts at node 0.
-			int minLen = Integer.MAX_VALUE;
-			for (LinkedList<Integer> p : allPaths) {
-				if (p.size() < minLen)
-					minLen = p.size();
-			}
-			// remove all the long paths or invalid paths 
-			Iterator<LinkedList<Integer>> iter = allPaths.iterator();
-			while (iter.hasNext()) {
-				LinkedList<Integer> p = iter.next();
-				if (p.size() > minLen) {
-					iter.remove();
+			Dijkstra dijkstra = new Dijkstra(edges);
+			List<LinkedList<Integer>> allPaths = dijkstra.shortestPaths();
+			if (verbose) {
+				if (allPaths.size() > 16) {
+					StringBuilder phrase = new StringBuilder();
+					for (String syllable : syllables) {
+						phrase.append(syllable);
+						phrase.append(' ');
+					}
+					System.out.printf("This phrase is too ambiguous, giving %d shortest paths!\n\t%s\n", 
+							allPaths.size(), phrase.toString().trim());
 				}
 			}
 			return allPaths;
-		}
-		
-		/**
-		 * Finds all paths from the first node (0) to the last node (n)
-		 * of this "backward" graph.
-		 * @return a list of paths.
-		 */
-		public List<LinkedList<Integer>> paths() {
-			List<LinkedList<Integer>> list = paths(n);
-			return list;
-		}
-		
-		/**
-		 * Finds all paths to a given node.
-		 * @param v
-		 * @return a list of paths to <code>v</code>
-		 */
-		private List<LinkedList<Integer>> paths(int v) {
-			LinkedList<Integer> nodes = edges.get(v);
-			if (nodes.size() == 0) {
-				LinkedList<Integer> stop = new LinkedList<Integer>();
-				stop.add(v);
-				List<LinkedList<Integer>> list = new ArrayList<LinkedList<Integer>>();
-				list.add(stop);
-				return list;
-			} else {
-				List<LinkedList<Integer>> vList = new ArrayList<LinkedList<Integer>>();
-				for (Integer u : nodes) {
-					// recursively compute the paths from u
-					List<LinkedList<Integer>> uList = paths(u);
-					for (LinkedList<Integer> list : uList) {
-						list.add(v);
-						vList.add(list);
-					}
-				}
-				return vList;
-			}
 		}
 		
 		/**
@@ -800,6 +788,16 @@ public class Tokenizer implements Serializable {
 		
 	}
 	
+	class IntegerComparator implements Comparator<Integer>, Serializable {
+		
+		private static final long serialVersionUID = 3285846060042662009L;
+
+		@Override
+		public int compare(Integer i, Integer j) {
+			return i - j;
+		}
+		
+	}
 	
 	public void setVerbose(boolean verbose) {
 		this.verbose = verbose;

@@ -45,10 +45,11 @@ import de.l3s.boilerpipe.extractors.ArticleExtractor;
 
 /**
  * @author Phuong LE-HONG
- * <p>
- * Mar 11, 2016, 10:20:06 AM
- * <p>
- * Fast and simple reimplementation of <code>vnTokenizer</code> tool.
+ *         <p>
+ *         Mar 11, 2016, 10:20:06 AM
+ *         <p>
+ *         Fast and scalable re-implementation of <code>vnTokenizer</code> tool.
+ *         This is the word segmentation tool for Vietnamese.
  */
 public class Tokenizer implements Serializable {
 	

@@ -13,8 +13,8 @@ scale data processing. And hence, Vitk is a fast cluster computing
 toolkit.
 
 As an example, the Vietnamese word segmentation tool of Vitk can
-tokenize a text of two million Vietnamese syllables in less than two
-minutes on a cluster of three computers (24 cores, 24 GB RAM), giving an
+tokenize a text of two million Vietnamese syllables in 20 seconds
+on a cluster of three computers (24 cores, 24 GB RAM), giving an
 accuracy of about 97%.
 
 ## Tools ##

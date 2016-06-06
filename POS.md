@@ -6,17 +6,17 @@ model (CMM), a common probabilistic model for sequence labelling. In
 essence, CMM is a discriminative model which models the conditional
 probability distribution `P(tag sequence|word sequence)`. This
 probability is decomposed into a chain of local probability
-distribution `P(tag|word)` by using the Markov property. Each local
+distributions `P(tag|word)` by using the Markov property. Each local
 probability distribution is a log-linear model (also called a maximum
 entropy model). 
 
 ### Modes ##
 
 The tagger has three modes: `tag`, `eval`, and `train`. In each run,
-it executes in one of these mode.
+it executes in one of these modes.
 
 1. In the `tag` mode, the tagger loads a pre-trained CMM, reads
-  and tag an input text file and writes the result to the console or
+  and tags an input text file and writes the result to the console or
   to an output file if specified.
   * A pre-trained CMM is located in a data folder of the tagger. Vitk
 	comes with a pre-trained CMM for Vietnamese, which is located in the
@@ -26,9 +26,9 @@ it executes in one of these mode.
   been word segmented, and it will be tagged line by line. 
 2. In the `eval` mode, the tagger loads a pre-trained CMM, reads
   and evaluates the accuracy of the tagger on an input text file, and
-  writes the performance of the tagger to the console.
+  reports the performance of the tagger to the console.
   * A pre-trained CMM is similar to that in the `tag` mode
-  above.
+  described above.
   * However, the input text file now contains manually tagged
   sentences, each sentence on a line, in a simple format as follows:
   `Đất/N nghèo/A trở_mình/V ./.` That is, each word is paired with its

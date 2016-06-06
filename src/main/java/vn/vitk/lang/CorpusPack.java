@@ -7,9 +7,11 @@ import vn.vitk.dp.DependencyGraphReader;
 
 /**
  * @author Phuong LE-HONG, <phuonglh@gmail.com>
- * <p>
- * Mar 15, 2016, 2:44:37 PM
- * <p>
+ *         <p>
+ *         Mar 15, 2016, 2:44:37 PM
+ *         <p>
+ *         Some string constants of corpus and data resources corresponding to a
+ *         language.
  */
 public class CorpusPack {
 	private Language language;
@@ -77,6 +79,35 @@ public class CorpusPack {
 			return "/export/dat/udt/en/model-train-mlp-3layers";
 		case VIETNAMESE:
 			return "/export/dat/udt/vi/model-train-01-mlp-2layers";
+		}
+		return null;
+	}
+
+	
+	/**
+	 * The tagger model filename 
+	 * @return
+	 */
+	public String taggerModelFileName() {
+		switch (language) {
+		case ENGLISH:
+			return "/export/dat/tag/en/cmm";
+		case VIETNAMESE:
+			return "/export/dat/tag/vi/cmm";
+		}
+		return null;
+	}
+	
+	/**
+	 * The filename containing all tagged corpus.
+	 * @return
+	 */
+	public String taggerCorpusFileName() {
+		switch (language) {
+		case ENGLISH:
+			return "/export/dat/tag/en/brown.txt";
+		case VIETNAMESE:
+			return "/export/dat/tag/vi/vtb-tagged.txt";
 		}
 		return null;
 	}

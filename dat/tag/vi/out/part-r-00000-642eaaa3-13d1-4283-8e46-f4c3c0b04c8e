@@ -1,0 +1,10 @@
+{"sentence":"Cụ Tú tóc đã bạc hết cả .","prediction":"N Np N R A V T ."}
+{"sentence":"Có tật giật_mình .","prediction":"V N V ."}
+{"sentence":"Chương 1 là chương dài nhất của cuốn sách .","prediction":"N M V N A A E Nc N ."}
+{"sentence":"Thị_xã Tân_An cách Thành_phố Hồ_Chí_Minh 50 km .","prediction":"N Np V N Np M Nu ."}
+{"sentence":"Ông ấy là chủ dãy nhà năm căn phố Hàng_Bông .","prediction":"N P V N N N M Nc N Np ."}
+{"sentence":"Đây là chỗ họp thích_hợp nhất .","prediction":"P V N V A R ."}
+{"sentence":"Người thứ nhất về đích trước người thứ hai một phần mười giây .","prediction":"N N M E N N N N M M N M Nu ."}
+{"sentence":"Chiếc xe khổ của anh vẫn mới hơn xe của tôi .","prediction":"Nc N A E N R R A N E P ."}
+{"sentence":"Theo ý tôi , cả bài_thơ chỉ được câu này và cả câu này chỉ được một chữ đấy .","prediction":"E N P , P N R V N P CC P N P R V M N P ."}
+{"sentence":"Chiều nay , thế_nào cũng mưa .","prediction":"N P , X R V ."}

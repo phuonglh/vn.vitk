@@ -78,12 +78,12 @@ public class Evaluator {
 	 * Evaluates two arrays of words. These arrays are supposed to have positive length 
 	 * and "well-formed", e.g., they have the same length measured in syllables.
 	 * 
-	 * @param s1 an array of words (a sentence). This is an output sentence of the tokenizer.
+	 * @param s1 an array of words (a sentence). This is an output sentence of a tokenizer.
 	 * @param s2 an array of words (a sentence). This is the correct sentence (manually tokenized).
 	 * @param id the id (order) of the two strings 
 	 * @return number of matched words of the two sentences.
 	 */
-	public static int evaluate(String[] s1, String[] s2, int id) {
+	private static int evaluate(String[] s1, String[] s2, int id) {
 
 		String[][] paddedStrings = padStrings(s1, s2);
 		int n = 0;
@@ -133,8 +133,8 @@ public class Evaluator {
 	/**
 	 * Evaluates two lists of tokenized sentences, calculates the precision and recall ratios. 
 	 *  
-	 * @param automaticSentences an array of automatically tokenized sentences
-	 * @param correctSentences an array of manually tokenized sentences
+	 * @param automaticSentences a list of automatically tokenized sentences
+	 * @param correctSentences a list of manually tokenized sentences
 	 * @return a two element float array, the first number if the precision ratio, the second number is the recall ratio. 
 	 */
 	public static float[] evaluate(List<String> automaticSentences, List<String> correctSentences) {

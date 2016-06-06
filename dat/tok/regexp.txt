@@ -1,4 +1,4 @@
-01:phrase  [\p{Ll}\s]+(?=[\s\.,\!\?\-\:;"'\(\)]+|$)(?<!(http|https|ftp))
+01:phrase  [\p{Ll}\s]+(?=[\s\.,\!\?\-\:;"“”'\(\)]+|$)(?<!(http|https|ftp))
 02:allcaps	([\p{Lu}\.]+)([\p{Lu}\.]+)*[^\p{Ll}\)\W]
 03:entity1	\d+([\.,]\d+)*[\p{IsLatin}]+\d*
 03:entity2	[\p{IsLatin}]+(\d)+
@@ -26,7 +26,7 @@
 11:degree	[\-\+]?([0-9]*[\.,])?[0-9]+°
 12:fraction	(\d+)/(\d+)
 13:unit [\p{IsLatin}]+/[\p{IsLatin}]+
-14:punctuation	[\.,\!\?\-\:;"'/]+
+14:punctuation	[\.,\!\?\-\:;"“”'/]+
 15:parentheses	[\(\)\[\{\]\}]+
 16:space	\s+
 17:special	[`~\!@#\$%\^&\*\-_\+=\|\\\:;"',<\.>/\?]+

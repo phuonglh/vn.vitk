@@ -24,7 +24,7 @@ on a single machine, giving an accuracy of about 95% on the Vietnamese treebank.
 
 ## Tools ##
 
-Currently, Vitk consists of two fundamental tools for text processing:
+Currently, Vitk consists of three fundamental tools for text processing:
 
 * Word segmentation
 * Part-of-speech tagging

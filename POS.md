@@ -102,7 +102,7 @@ copied to `/export/dat/tag`. To launch Vitk, open a console, enter the
 folder `~/spark` and invoke an appropriate command. For example:
 
 
-1. To tag an input file and write the result to an output file, using
+* To tag an input file and write the result to an output file, using
   the default pre-trained CMM:
 
 `./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -t tag -a tag -i
@@ -112,19 +112,19 @@ There is not any `-m` argument in the command above, therefore, Vitk
 runs in the stand-alone cluster mode which uses a single local machine
 and all CPU cores.
 
-2. To tag an input file, write the result to an output file, using a
+* To tag an input file, write the result to an output file, using a
    specified pre-trained CMM:
 
 `./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -t tag -a tag -i
   <input-file> -o <output-file> -cmm <cmm-file>` 
 
-3. To evaluate the accuracy on a gold corpus, using the default
+* To evaluate the accuracy on a gold corpus, using the default
    pre-trained CMM:
 
 `./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -t tag -a eval -i
   <input-file>` 
 
-4. To train a tagger on a gold corpus:
+* To train a tagger on a gold corpus:
 
 `./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -t tag -a train -dim
   10000 -reg 1e-6 -i <input-file>` 

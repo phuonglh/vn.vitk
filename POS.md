@@ -63,18 +63,18 @@ The tagger of Vitk has following arguments:
 * `-o <output-file>`: the name of an output file containing the
    tagging results (in the `tag` mode). Since by default, Vitk uses
    Hadoop file system to save results, the output file is actually a
-   directory. If this is a tagging result, it 
+   directory. It 
    contains text files in JSON format, and will be created by
    Vitk. Note that this directory must not already exist, otherwise an
    error will be thrown because Vitk cannot overwrite an existing
    directory. If this parameter is not specified, the result is
-   printed to the console window. If this is a CMM, it contains binary
-   files in the `parquet` format of Apache Spark.
+   printed to the console window. 
 * `-cmm <cmm-file>`: the name of a CMM file containing a tagging
    model. In the `tag` mode, this is a pre-trained CMM, while in the
    `train` mode, this is the resulting CMM of the training. If this
    argument is not specified, the tagger will use the default
-   file named `dat/tag/vi/cmm`.
+   file named `dat/tag/vi/cmm`. This contains binary
+   files in the `parquet` format of Apache Spark.
 * `-dim <dimension>`: this argument is only required in the `train` mode
   to specify the number of features (or the domain dimension) of the
   resulting CMM. The dimension is a positive integer and depends on
@@ -86,8 +86,8 @@ The tagger of Vitk has following arguments:
   training a CMM on about 10,000 tagged sentences of the Vietnamese
   treebank.
 * `-reg <lambda>`: this argument is only used in the `train` mode to
-  specify the L2-regularization term of the objective function to
-  minimize. This is a non-negative real value. The default value of
+  specify the L2-regularization term of the objective function to be
+  minimized. This is a non-negative real value. The default value of
   `lambda` is zero, that is there is no regularization. Using a small
   `lambda` often helps avoid overfitting and speed up the training. As an
   example, we set `lambda=1e-6` when training a CMM on about 10,000
@@ -107,6 +107,9 @@ folder `~/spark` and invoke an appropriate command. For example:
 
 `./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -t tag -a tag -i
   <input-file> -o <output-file>`
+
+Because the default mode of the tagger is `tag`, we can drop the argument 
+`-a tag`in the command above.
 
 There is not any `-m` argument in the command above, therefore, Vitk
 runs in the stand-alone cluster mode which uses a single local machine

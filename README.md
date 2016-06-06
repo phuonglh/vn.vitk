@@ -19,8 +19,8 @@ Some examples:
 tokenize a text of two million Vietnamese syllables in 20 seconds
 on a cluster of three computers (24 cores, 24 GB RAM), giving an
 accuracy of about 97%.
-* The part-of-speech tagger of Vitk can tag about 1,105,000 tokens per sentence, 
-giving an accuracy of about 95% on the Vietnamese treebank.
+* The part-of-speech tagger of Vitk can tag about 1,105,000 tokens per second, 
+on a single machine, giving an accuracy of about 95% on the Vietnamese treebank.
 
 ## Tools ##
 

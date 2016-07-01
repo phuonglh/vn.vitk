@@ -165,6 +165,7 @@ public class Dijkstra implements Serializable {
 	 */
 	public static void main(String[] args) {
 		Map<Integer, LinkedList<Integer>> edges = new TreeMap<Integer, LinkedList<Integer>>();
+		// test 1
 		for (int v = 0; v < 6; v++)
 			edges.put(v, new LinkedList<Integer>());
 		edges.get(5).add(4);
@@ -179,6 +180,20 @@ public class Dijkstra implements Serializable {
 		dijkstra.print();
 		System.out.println("Shortest paths: ");
 		List<LinkedList<Integer>> paths = dijkstra.shortestPaths();
+		for (LinkedList<Integer> path : paths) {
+			System.out.println(path);
+		}
+		// test 2
+		edges.clear();
+		for (int v = 0; v < 3; v++)
+			edges.put(v, new LinkedList<Integer>());
+		edges.get(2).add(1);
+		edges.get(2).add(0);
+		edges.get(1).add(0);
+		dijkstra = new Dijkstra(edges);
+		dijkstra.print();
+		System.out.println("Shortest paths: ");
+		paths = dijkstra.shortestPaths();
 		for (LinkedList<Integer> path : paths) {
 			System.out.println(path);
 		}

@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  * <p>
  * An utility to transform tokens into common templates, for example
  * numbers "100" or "1000" are transformed to NUMBER; "Ha Noi" or
- * "New York" are tranformed to "NAME", etc.   
+ * "New York" are transformed to "NAME", etc.   
  */
 public class Converter implements Serializable {
 	private static final long serialVersionUID = -8916193514910249287L;
@@ -59,6 +59,8 @@ public class Converter implements Serializable {
 					return "ENTITY";
 				else if (type.contains("name"))
 					return "NAME";
+				else if (type.contains("allcap"))
+					return "ALLCAP";
 				else if (type.contains("email"))
 					return "EMAIL";
 				else if (type.contains("date"))

@@ -1,8 +1,10 @@
 package vn.vitk.tag;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.function.FlatMapFunction;
@@ -106,7 +108,7 @@ public class ContextExtractor implements Serializable {
 		if (markovOrder == MarkovOrder.SECOND) {
 			u = (position < 2) ? Unknown.BOS.name() : labeledSequence.get(position-2)._2();
 			v = (position < 1) ? Unknown.BOS.name() : labeledSequence.get(position-1)._2();
-			fs.add("t(-2)+t(-1):" + (u + v));
+			fs.add("t(-2)+t(-1):" + (u + '+' + v));
 		}
 		return fs;
 		
@@ -119,7 +121,7 @@ public class ContextExtractor implements Serializable {
 	 * @return a labeled context
 	 */
 	public LabeledContext extract(List<Tuple2<String, String>> labeledSequence, int position) {
-		List<String> fs = new LinkedList<String>();
+		Set<String> fs = new HashSet<String>();
 		fs.addAll(extractBasicFeatures(labeledSequence, position));
 		fs.addAll(extractWordFormFeatures(labeledSequence, position));
 		fs.addAll(extractJointFeatures(labeledSequence, position));

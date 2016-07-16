@@ -2,8 +2,8 @@ package vn.vitk.lang;
 
 import java.util.List;
 
-import vn.vitk.dp.DependencyGraph;
-import vn.vitk.dp.DependencyGraphReader;
+import vn.vitk.dep.DependencyGraph;
+import vn.vitk.dep.DependencyGraphReader;
 
 /**
  * @author Phuong LE-HONG, <phuonglh@gmail.com>
@@ -31,9 +31,23 @@ public class CorpusPack {
 	public List<DependencyGraph> dependencyTreebankTraining() {
 		switch (language) {
 		case ENGLISH:
-			return DependencyGraphReader.readCoNLLU("/export/dat/udt/en/en-ud-train.conllu");
+			return DependencyGraphReader.read("/export/dat/udt/en/en-ud-train.conllu", 'u');
 		case VIETNAMESE:
-			return DependencyGraphReader.read("/export/dat/udt/vi/01-training.conll");
+			return DependencyGraphReader.read("/export/dat/udt/vi/01-training.conll", 'x');
+		}
+		return null;
+	}
+
+	/**
+	 * Gets development dependency treebank.
+	 * @return a development dependency treebank
+	 */
+	public List<DependencyGraph> dependencyTreebankDevelopment() {
+		switch (language) {
+		case ENGLISH:
+			return DependencyGraphReader.read("/export/dat/udt/en/en-ud-dev.conllu", 'u');
+		case VIETNAMESE:
+			return DependencyGraphReader.read("/export/dat/udt/vi/01-test.conll", 'x');
 		}
 		return null;
 	}
@@ -45,9 +59,9 @@ public class CorpusPack {
 	public List<DependencyGraph> dependencyTreebankTest() {
 		switch (language) {
 		case ENGLISH:
-			return DependencyGraphReader.readCoNLLU("/export/dat/udt/en/en-ud-test.conllu");
+			return DependencyGraphReader.read("/export/dat/udt/en/en-ud-test.conllu", 'u');
 		case VIETNAMESE:
-			return DependencyGraphReader.read("/export/dat/udt/vi/01-test.conll");
+			return DependencyGraphReader.read("/export/dat/udt/vi/01-test.conll", 'x');
 		}
 		return null;
 	}
@@ -75,15 +89,14 @@ public class CorpusPack {
 	public String dependencyClassifierFileName() {
 		switch (language) {
 		case ENGLISH:
-//			return "/export/dat/udt/en/model-train-mlp-2layers";
-			return "/export/dat/udt/en/model-train-mlp-3layers";
+			return "/export/dat/udt/en/model-train-mlp-2layers";
+//			return "/export/dat/udt/en/model-train-mlp-3layers";
 		case VIETNAMESE:
 			return "/export/dat/udt/vi/model-train-01-mlp-2layers";
 		}
 		return null;
 	}
 
-	
 	/**
 	 * The tagger model filename 
 	 * @return

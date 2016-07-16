@@ -41,16 +41,21 @@ been installed in `~/vitk`, data files required by this tool have been
 copied to `/export/dat/tok`. To launch Vitk, open a console, enter the
 folder `~/spark` and invoke an appropriate command. For example:
 
-*	`./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -u <url>` 
-* `./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -i <input-file>`
-* `./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -i <input-file> -o
+*	`./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -u <url>` 
+* `./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -i <input-file>`
+* `./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -i <input-file> -o
   <output-file>`
-* `./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -m <master-url> -u
+* `./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -m <master-url> -u
   <url>`
-* `./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -m <master-url> -i
+* `./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -m <master-url> -i
   <input-file> -o <output-file>` 
-* `./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -m <master-url> -i
+* `./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -m <master-url> -i
   <input-file> -o <output-file> -v` 
+
+### References ###
+* [A hybrid approach to word segmentation of Vietnamese texts](http://mim.hus.vnu.edu.vn/phuonglh/node/33), 
+Phuong Le-Hong et al., Springer LNCS 5196, 2008.
+
 
 ---
 [Back to Vitk](https://github.com/phuonglh/vn.vitk)

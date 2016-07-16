@@ -63,7 +63,7 @@ public class CMMModel extends Model<CMMModel> implements MLWritable {
 	private final Map<String, Set<Integer>> tagDictionary; 
 	
 	/**
-	 * Creates a MEMM.
+	 * Creates a conditional Markov model.
 	 * @param pipelineModel
 	 * @param weights
 	 * @param markovOrder

@@ -4,7 +4,7 @@
   <groupId>vn.vitk</groupId>
   <artifactId>vn.vitk</artifactId>
   <name>A Vietnamese Processing Toolkit</name>
-  <version>2.0</version>
+  <version>3.0</version>
   <description>A Vietnamese Text Processing Toolkit</description>
   <build>
     <plugins>

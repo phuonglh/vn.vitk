@@ -45,7 +45,8 @@ it executes in one of these modes.
   * The input text file contains correct tagged sentences in the
     simple format as described in the `eval` mode above. The result of
   training is a CMM, which is then saved to an output
-  file. Pre-trained tagging models provided by Vitk are also created 
+  file. 
+  * Pre-trained tagging models provided by Vitk are also created 
   by running the tagger in this mode.
 
 ### Arguments ###
@@ -105,7 +106,7 @@ folder `~/spark` and invoke an appropriate command. For example:
 * To tag an input file and write the result to an output file, using
   the default pre-trained CMM:
 
-`./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -t tag -a tag -i
+`./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -t tag -a tag -i
   <input-file> -o <output-file>`
 
 Because the default mode of the tagger is `tag`, we can drop the argument 
@@ -118,31 +119,31 @@ and all CPU cores.
 * To tag an input file, write the result to an output file, using a
    specified pre-trained CMM:
 
-`./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -t tag -a tag -i
+`./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -t tag -a tag -i
   <input-file> -o <output-file> -cmm <cmm-file>` 
 
 * To evaluate the accuracy on a gold corpus, using the default
    pre-trained CMM:
 
-`./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -t tag -a eval -i
+`./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -t tag -a eval -i
   <input-file>` 
 
 * To train a tagger on a gold corpus:
 
-`./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -t tag -a train -dim
+`./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -t tag -a train -dim
   10000 -reg 1e-6 -i <input-file>` 
 
 The resulting CMM has 10 thousands dimensions and is saved to the
-default directory `/export/dat/vi/cmm`. If you want to save the result
+default directory `/export/dat/tag/vi/cmm`. If you want to save the result
 to a specific directory, append the `-cmm` argument, for example:
 
-`./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -t tag -a train -dim
+`./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -t tag -a train -dim
   10000 -reg 1e-6 -i <input-file> -cmm /tmp/myCMM` 
 
 If you wish to run Vitk on a Spark cluster, all you need to do is to
 specify the master URL of the cluster, such as: 
 
-`./bin/spark-submit ~/vitk/target/vn.vitk-2.0.jar -t tag -a tag -i
+`./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -t tag -a tag -i
   <input-file> -o <output-file> -m <master-url>` 
 
 For your convenience, Vitk includes a sample file containing 1,000

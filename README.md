@@ -4,15 +4,22 @@
 This is the second release of a Vietnamese text processing toolkit,
 which is called "Vitk", developed by [Phuong
 LE-HONG](http://mim.hus.vnu.edu.vn/phuonglh) 
- at College of Natural Sciences, Vietnam National University in Hanoi.
+ at College of Sciences, Vietnam National University in Hanoi.
 
 There are some toolkits for Vietnamese text processing which are
 already published. However, most of them are not readily scalable for
 large data processing. This toolkit aims at the ability of processing
-big textual data. For this reason, it uses Apache Spark as its core
+big text data. For this reason, it uses Apache Spark as its core
 platform. Apache Spark is a fast and general engine for large
-scale data processing. And hence, Vitk is a fast cluster computing
+scale data processing. Therefore, Vitk is a fast cluster computing
 toolkit.
+
+Despite of its name, this toolkits supports processing in various natural 
+language providing that suitable underlying models or linguistic resources 
+are available for the different languages. The toolkit is packaged with models 
+and resources for processing Vietnamese. The users can build models for 
+other languages using the underlying tools.    
+
 
 Some examples: 
 * The word segmentation tool of Vitk can
@@ -21,6 +28,10 @@ on a cluster of three computers (24 cores, 24 GB RAM), giving an
 accuracy of about 97%.
 * The part-of-speech tagger of Vitk can tag about 1,105,000 tokens per second, 
 on a single machine, giving an accuracy of about 95% on the Vietnamese treebank.
+* The dependency parser of Vitk parses 12,543 sentences (204,586 tokens) of the 
+English universal dependency treebank ([English UDT](http://universaldependencies.org/#en))  in less 
+than 20 seconds, giving an accuracy of 68.28% (UAS) or 66.30% (LAS).
+
 
 ## Tools ##
 
@@ -31,12 +42,9 @@ Currently, Vitk consists of three fundamental tools for text processing:
 * Dependency parsing 
 
 The word segmentation tool is specific to the Vietnamese language. The
-other tools are general and can be trained to parse any language; we
-have tested them on English and Vietnamese. 
-
-We are working to develop and integrate more fundamental tools to Vitk
-named entity recognition, constituency parsing, etc. We hope that
-these tools will be available soon.
+other tools are general and can be trained to parse any language.
+We are working to develop and integrate more fundamental tools to Vitk such as
+named entity recognition, constituency parsing, opinion mining, etc.
 
 ## Setup and Compilation ##
 
@@ -51,7 +59,7 @@ these tools will be available soon.
 	`mvn -version`
 
 * Download a prebuilt version of [Apache Spark](https://spark.apache.org/).
-	Vitk uses Spark version 1.6.1. Unpack the compressed file to a directory,
+	Vitk uses Spark version 1.6.x. Unpack the compressed file to a directory,
 	for example `~/spark` where `~` is your home directory.
 
 * Download Vitk, either a binary archive or its source code. The
@@ -64,7 +72,7 @@ these tools will be available soon.
 
 	Apache Maven will automatically resolve and download dependency
 	libraries required by Vitk. Once the process finishes, you should
-	have a binary jar file `vn.vitk-2.0.jar` in the sub-directory
+	have a binary jar file `vn.vitk-3.0.jar` in the sub-directory
 	`target`. 
 
 
@@ -104,6 +112,7 @@ that you have some folders as follows:
 * `/export/dat/tok`
 * `/export/dat/tok/whitespace.model`
 * `/export/dat/tag/vi/cmm`
+* `/export/dat/dep/vi/mlp`
 
 If you run Vitk on a stand-alone cluster mode, it is sufficient to
 create the data folders specified above on your single machine. The
@@ -111,8 +120,8 @@ NFS stuffs can be ignored.
 
 ### Usage ###
 
-Vitk is an Apache Spark application, you can run it by submitting the 
-main JAR file `vn.vitk-2.0.jar` to Apache Spark. The main class of the
+Vitk is an Apache Spark application, you run it by submitting the 
+main JAR file `vn.vitk-3.0.jar` to Apache Spark. The main class of the
 toolkit is `vn.vitk.Vitk` which selects the desired tool by following
 arguments provided by the user.  
 
@@ -126,7 +135,12 @@ The general arguments of Vitk are as follows:
 
 * `-t <tool>`: the tool to run, where `tool` is an abbreviation 
    of the tool: `tok` for word segmentation (or tokenization); `tag` for 
-   part-of-speech tagging, `dep` for dependency parsing.
+   part-of-speech tagging, `dep` for dependency parsing. If this argument is not 
+   specified, the default `tok` tool is used.
+   
+* `-l <language>`: the natural language to process, where `language` is an abbreviation 
+   of language name which is either `vi` (Vietnamese) or `en` (English). If this 
+   argument is not specified, the default language is Vietnamese.     
   
 * `-v`: this parameter does not require argument. If it is used, Vitk
    runs in verbose mode, in which some intermediate information
@@ -172,4 +186,4 @@ Any bug reports, suggestions and collaborations are welcome. I am
 reachable at: 
 
 * LE-HONG Phuong, http://mim.hus.vnu.edu.vn/phuonglh
-* College of Natural Sciences, Vietnam National University in Hanoi 
+* College of Sciences, Vietnam National University in Hanoi 

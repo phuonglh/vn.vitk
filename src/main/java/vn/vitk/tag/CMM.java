@@ -191,7 +191,7 @@ public class CMM extends Estimator<CMMModel> {
 	 * Creates a processing pipeline.
 	 * @return a pipeline
 	 */
-	public Pipeline createPipeline() {
+	private Pipeline createPipeline() {
 		Tokenizer tokenizer = new Tokenizer()
 			.setInputCol("featureStrings")
 			.setOutputCol("tokens");

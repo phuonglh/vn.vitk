@@ -44,7 +44,7 @@ public class CMMParams extends JavaParams {
 		setDefault(maxIter, 100);
 		
 		tolerance = new DoubleParam(this, "tolerance", "convergence tolerance of iterations", ParamValidators.gt(0));
-		setDefault(tolerance, 1E-6);
+		setDefault(tolerance, 1E-5);
 		
 		markovOrder = new IntParam(this, "markovOrder", "Markov order of the model", ParamValidators.gt(0));
 		setDefault(markovOrder, 1);
@@ -126,7 +126,7 @@ public class CMMParams extends JavaParams {
 	}
 	
 	/**
-	 * Set the max iterarations in training.
+	 * Set the max iterations in training.
 	 * @param value
 	 * @return this object.
 	 */

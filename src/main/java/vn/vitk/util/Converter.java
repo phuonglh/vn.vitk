@@ -56,31 +56,31 @@ public class Converter implements Serializable {
 			String t = token.replace('_', ' ');
 			if (pattern.matcher(t).matches()) {
 				if (type.contains("entity"))
-					return "ENTITY";
+					return "entity";
 				else if (type.contains("name"))
-					return "NAME";
+					return "name";
 				else if (type.contains("allcap"))
-					return "ALLCAP";
+					return "allcap";
 				else if (type.contains("email"))
-					return "EMAIL";
+					return "email";
 				else if (type.contains("date"))
-					return "DATE";
+					return "date";
 				else if (type.contains("hour"))
-					return "HOUR";
+					return "hour";
 				else if (type.contains("number"))
-					return "NUMBER";
+					return "number";
 				else if (type.contains("fraction"))
-					return "FRACTION";
+					return "fraction";
 				else if (type.contains("punctuation"))
-					return "PUNCT";
+					return "punct";
 			}
 		}
-		return token.toLowerCase();
+		return "normal";
 	}
 	
 	public static void main(String[] args) {
 		Converter transformer = new Converter("dat/tok/regexp.txt");
-		String[] tokens = {"H5N1", "2006/11/12", "22/07/2012", "khanhlh@mail.com", "12:05", "299.2", "33/3", "Jean-Claude Juncker", "Lê Hồng Quang", "không có gì"};
+		String[] tokens = {"H5N1", "H5N1;Np", "2006/11/12", "22/07/2012;D", "khanhlh@mail.com", "12:05", "299.2", "33/3", "Jean-Claude Juncker", "Lê Hồng Quang", "không có gì"};
 		for (String token : tokens)
 			System.out.println(token + "=>" + transformer.convert(token));
 	}

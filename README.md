@@ -1,7 +1,7 @@
 # Vitk -- A Vietnamese Text Processing Toolkit #
 ---
 
-This is the second release of a Vietnamese text processing toolkit,
+This is the third release of a Vietnamese text processing toolkit,
 which is called "Vitk", developed by [Phuong
 LE-HONG](http://mim.hus.vnu.edu.vn/phuonglh) 
  at College of Sciences, Vietnam National University in Hanoi.

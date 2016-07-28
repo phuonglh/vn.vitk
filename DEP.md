@@ -5,7 +5,7 @@ The dependency parser of Vitk implements a transition-based dependency parsing
 algorithm. At its core, this algorithm requires a classifier to 
 classify each parsing configuration into a transition. Vitk uses a multi-layer 
 perceptron (MLP) model (or an artificial neural network) as its classifier. This is a 
-simple network in that it either contains zero or only one hidden layer. 
+simple network in that it either contains no more than one hidden layer. 
   
 
 ### Modes ##
@@ -22,9 +22,8 @@ it executes in one of these modes.
     parsed sentences of a Vietnamese Treebank.
   * The input text file is a plain text in UTF-8 encoding containing part-of-speech 
   tagged sentence, each on a line, in a simple format as follows:
-  `ROOT/ROOT Đất/N nghèo/A trở_mình/V ./.` That is, each word is paired with its
-  correct part-of-speech tag, separated by the slash character. Note that an additional `ROOT` 
-  token is added to mark the root token at position 0 of the sentence. 
+  `Đất/N nghèo/A trở_mình/V ./.` That is, each word is paired with its
+  correct part-of-speech tag, separated by the slash character.  
 2. In the `eval` mode, the parser loads a pre-trained MLP, reads
   and evaluates the accuracy of the parser on an input text file, and
   reports the performance of the parser to the console.

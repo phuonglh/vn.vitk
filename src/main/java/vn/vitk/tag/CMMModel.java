@@ -167,8 +167,12 @@ public class CMMModel extends Model<CMMModel> implements MLWritable {
 		 */
 		private Tuple2<double[], String> probability(LabeledContext context) {
 			String[] fs = context.getFeatureStrings().toLowerCase().split("\\s+");
-			List<Tuple2<Integer, Double>> x = new LinkedList<Tuple2<Integer, Double>>();
+			Set<String> fsset = new HashSet<String>();
 			for (String f : fs) {
+				fsset.add(f);
+			}
+			List<Tuple2<Integer, Double>> x = new LinkedList<Tuple2<Integer, Double>>();
+			for (String f : fsset) {
 				Integer i = featureMap.get(f);
 				if (i != null) {
 					x.add(new Tuple2<Integer, Double>(i, 1.0));

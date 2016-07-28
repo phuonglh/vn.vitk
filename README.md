@@ -15,7 +15,7 @@ scale data processing. Therefore, Vitk is a fast cluster computing
 toolkit.
 
 Despite of its name, this toolkits supports processing in various natural 
-language providing that suitable underlying models or linguistic resources 
+languages providing that suitable underlying models or linguistic resources 
 are available for the different languages. The toolkit is packaged with models 
 and resources for processing Vietnamese. The users can build models for 
 other languages using the underlying tools.    

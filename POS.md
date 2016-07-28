@@ -133,7 +133,7 @@ and all CPU cores.
 `./bin/spark-submit ~/vitk/target/vn.vitk-3.0.jar -t tag -a train -dim
   10000 -reg 1e-6 -i <input-file>` 
 
-The resulting CMM has 10 thousands dimensions and is saved to the
+The resulting CMM has 10 thousand dimensions and is saved to the
 default directory `/export/dat/tag/vi/cmm`. If you want to save the result
 to a specific directory, append the `-cmm` argument, for example:
 

@@ -190,7 +190,7 @@ public class Vitk {
 					tagger.load(cmm);
 					if (cm.hasOption("o")) {
 						outputFileName = cm.getOptionValue("o");
-						tagger.tag(inputFileName, outputFileName, Tagger.OutputFormat.JSON);
+						tagger.tag(inputFileName, outputFileName, Tagger.OutputFormat.TEXT);
 					} else {
 						tagger.tag(inputFileName);
 					}

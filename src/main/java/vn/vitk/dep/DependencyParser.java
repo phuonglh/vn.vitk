@@ -85,11 +85,13 @@ public abstract class DependencyParser {
 		@Override
 		public Sentence call(String line) throws Exception {
 			String[] taggedTokens = line.trim().split("\\s+");
-			int n = taggedTokens.length;
+			int n = taggedTokens.length + 1;
 			String[] tokens = new String[n];
 			String[] tags = new String[n];
-			for (int j = 0; j < n; j++) {
-				String[] parts = taggedTokens[j].split("/");
+			tokens[0] = "ROOT";
+			tags[0] = "ROOT";
+			for (int j = 1; j < n; j++) {
+				String[] parts = taggedTokens[j-1].split("/");
 				if (parts.length == 2) {
 					tokens[j] = parts[0];
 					tags[j] = parts[1];

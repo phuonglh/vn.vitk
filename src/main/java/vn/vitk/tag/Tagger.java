@@ -211,7 +211,8 @@ public class Tagger implements Serializable {
 				output.write().parquet(outputFileName);
 				break;
 			case TEXT:
-				output.select("prediction").write().text(outputFileName);
+				toTaggedSentence(output).repartition(1).saveAsTextFile(outputFileName);
+//				output.select("prediction").write().text(outputFileName);
 				break;
 			}
 		} else {
@@ -293,6 +294,29 @@ public class Tagger implements Serializable {
 			}
 			System.out.println(sb.toString().trim());
 		}
+	}
+	
+	private JavaRDD<String> toTaggedSentence(DataFrame output) {
+		return output.javaRDD().map(new Function<Row, String>() {
+			private static final long serialVersionUID = 4208643510231783579L;
+			@Override
+			public String call(Row row) throws Exception {
+				String[] tokens = row.getString(0).trim().split("\\s+");
+				String[] tags = row.getString(1).trim().split("\\s+");
+				if (tokens.length != tags.length) {
+					System.err.println("Incompatible lengths!");
+					return null;
+				}
+				StringBuilder sb = new StringBuilder(64);
+				for (int j = 0; j < tokens.length; j++) {
+					sb.append(tokens[j]);
+					sb.append('/');
+					sb.append(tags[j]);
+					sb.append(' ');
+				}
+				return sb.toString().trim();
+			}
+		});
 	}
 	
 	/**

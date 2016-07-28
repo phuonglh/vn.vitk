@@ -3,7 +3,7 @@
 * Change the source package "dp" to "dep" for transition-based dependency parsing. Do 
   some minor code re-factorings.
 * Update Vitk.java, add option "l" for language selection (either 'en' or 'vi', default is 'vi')
-  and "dp" tool selection.
+  and "dep" tool selection.
 * Add documentation for dependency parsing tool.
 * Add experiments and results on the English universal dependency treebank and 
   on a Vietnamese dependency treebank.

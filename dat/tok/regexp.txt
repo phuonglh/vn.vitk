@@ -1,5 +1,6 @@
 01:phrase  [\p{Ll}\s]+(?=[\s\.,\!\?\-\:;"“”'\(\)]+|$)(?<!(http|https|ftp))
-02:allcaps	([\p{Lu}\.]+)([\p{Lu}\.]+)*[^\p{Ll}\)\W]
+02:allcaps	([A-Z]+)([A-Z\.])*[^a-z\)\W]
+#02:allcaps	([\p{Lu}\.]+)([\p{Lu}\.]+)*[^\p{Ll}\)\W]
 03:entity1	\d+([\.,]\d+)*[\p{IsLatin}]+\d*
 03:entity2	[\p{IsLatin}]+(\d)+
 03:entity3	([\p{Lu}]+\d*)+

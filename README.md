@@ -4,7 +4,7 @@
 This is the third release of a Vietnamese text processing toolkit,
 which is called "Vitk", developed by [Phuong
 LE-HONG](http://mim.hus.vnu.edu.vn/phuonglh) 
- at College of Sciences, Vietnam National University in Hanoi.
+ at College of Science, Vietnam National University in Hanoi.
 
 There are some toolkits for Vietnamese text processing which are
 already published. However, most of them are not readily scalable for
@@ -14,7 +14,7 @@ platform. Apache Spark is a fast and general engine for large
 scale data processing. Therefore, Vitk is a fast cluster computing
 toolkit.
 
-Despite of its name, this toolkits supports processing in various natural 
+Despite of its name, this toolkit supports processing in various natural 
 languages providing that suitable underlying models or linguistic resources 
 are available for the different languages. The toolkit is packaged with models 
 and resources for processing Vietnamese. The users can build models for 
@@ -186,4 +186,4 @@ Any bug reports, suggestions and collaborations are welcome. I am
 reachable at: 
 
 * LE-HONG Phuong, http://mim.hus.vnu.edu.vn/phuonglh
-* College of Sciences, Vietnam National University in Hanoi 
+* College of Science, Vietnam National University in Hanoi 

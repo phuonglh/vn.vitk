@@ -1,7 +1,8 @@
 # Vitk -- A Vietnamese Text Processing Toolkit #
 ---
 
-NOTE: A new, updated toolkit is available at [vnTokenizer](http://mim.hus.vnu.edu.vn/dsl/tools/tokenizer)
+NOTE: A new, updated and lightweight toolkit, which does not use Apache Spark is available at [vnTokenizer](http://mim.hus.vnu.edu.vn/dsl/tools/tokenizer) and [vnTagger](http://mim.hus.vnu.edu.vn/dsl/tools/tagger), and
+its [online demo website](http://vlsp.org.vn:8080/vitk/).
 
 This is the third release of a Vietnamese text processing toolkit,
 which is called "Vitk", developed by [Phuong

@@ -1,7 +1,7 @@
 # Vitk -- A Vietnamese Text Processing Toolkit #
 ---
 
-NOTE: A new, updated and lightweight toolkit, which does not use Apache Spark is available at [vnTokenizer](http://mim.hus.vnu.edu.vn/dsl/tools/tokenizer) and [vnTagger](http://mim.hus.vnu.edu.vn/dsl/tools/tagger), and
+NOTE: Early 2018, a new, updated and lightweight toolkit, which does not use Apache Spark is available at [vnTokenizer](http://mim.hus.vnu.edu.vn/dsl/tools/tokenizer) and [vnTagger](http://mim.hus.vnu.edu.vn/dsl/tools/tagger), and
 its [online demo website](http://vlsp.org.vn:8080/vitk/).
 
 This is the third release of a Vietnamese text processing toolkit,
@@ -18,7 +18,7 @@ scale data processing. Therefore, Vitk is a fast cluster computing
 toolkit.
 
 If you don't want to use Apache Spark, you should download and use a standalone 
-Vietnamese tokenizer or tagger on there website, only one JAR file is need to 
+Vietnamese tokenizer or tagger from their website, only one JAR file is needed to 
 run the program. [vnTokenizer 5.1](http://mim.hus.vnu.edu.vn/dsl/tools/tokenizer) and 
 [vnTagger](http://mim.hus.vnu.edu.vn/dsl/tools/tagger)
 

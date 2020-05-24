@@ -1,6 +1,8 @@
 # Vitk -- A Vietnamese Text Processing Toolkit #
 ---
 
+**NOTE: This repos is now obsolete. Interested programmers should consider to use the new repo vlp (github.com/phuonglh/vlp). NER is a module in that multiple-module project for Vietnamese Language Processing with Scala.**
+
 NOTE: Early 2018, a new, updated and lightweight toolkit, which does not use Apache Spark is available at [vnTokenizer](http://mim.hus.vnu.edu.vn/dsl/tools/tokenizer) and [vnTagger](http://mim.hus.vnu.edu.vn/dsl/tools/tagger), and
 its [online demo website](http://vlsp.org.vn:8080/vitk/).
 
@@ -193,5 +195,5 @@ blog posts. For example, the word segmentation method is described in:
 Any bug reports, suggestions and collaborations are welcome. I am
 reachable at: 
 
-* LE-HONG Phuong, http://mim.hus.vnu.edu.vn/phuonglh
+* LE-HONG Phuong, http://mim.hus.edu.vn/lhp/
 * College of Science, Vietnam National University in Hanoi 
